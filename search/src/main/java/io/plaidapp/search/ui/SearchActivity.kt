@@ -160,6 +160,7 @@ class SearchActivity : AppCompatActivity() {
                 override fun onLoadMore() {
                     viewModel.loadMore()
                 }
+
                 override fun isDataLoading(): Boolean {
                     return viewModel.searchProgress.value?.isLoading ?: false
                 }
@@ -301,7 +302,7 @@ class SearchActivity : AppCompatActivity() {
                 noResults =
                     (findViewById<View>(R.id.stub_no_search_results) as ViewStub).inflate() as TextView
                 noResults?.apply {
-                    setOnClickListener { v ->
+                    setOnClickListener {
                         searchView.setQuery("", false)
                         searchView.requestFocus()
                         ImeUtils.showIme(searchView)
